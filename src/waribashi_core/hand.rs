@@ -1,7 +1,7 @@
 
 pub type HandValueType = u8;
 
-const DEFAULT_VALUE: HandValueType = 0;
+pub const DEFAULT_HAND_VALUE: HandValueType = 0;
 
 
 pub struct Hand {
@@ -10,7 +10,7 @@ pub struct Hand {
 impl Hand {
     pub fn new() -> Self {
         Self {
-            value: DEFAULT_VALUE
+            value: DEFAULT_HAND_VALUE
         }
     }
 }
