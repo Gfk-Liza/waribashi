@@ -1,5 +1,8 @@
 
-use super::hand::HandValueType;
+use super::{
+    hand::HandValueType,
+    turn::Turn
+};
 
 pub struct Moves {
 }
