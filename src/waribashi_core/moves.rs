@@ -10,6 +10,7 @@ use super::{
 const DEFAULT_HAND: bool = true;
 const DEFAULT_MOVE_MODE: bool = false;
 
+
 pub struct Moves {
     pub add_value: HandValueType,
     pub is_destination_left_hand: bool,
@@ -26,7 +27,7 @@ impl Moves {
         }
     }
 
-    pub fn is_fist_side(&self, turn: &Turn) -> bool {
+    pub fn get_destination(&self, turn: &Turn) -> Turn {
         turn.turn ^ !self.is_divided
 
         // true ^ !true == true

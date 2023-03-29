@@ -1,8 +1,8 @@
 
-const FIRST_SIDE_VALUE: bool = true;
+const FIRST_SIDE_VALUE: usize = 0;
 
 pub struct Turn {
-    pub turn: bool,
+    pub turn: usize,
 }
 impl Turn {
     pub fn new() -> Self {

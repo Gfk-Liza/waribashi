@@ -4,6 +4,7 @@ pub type HandValueType = u8;
 pub const DEFAULT_HAND_VALUE: HandValueType = 0;
 
 
+#[derive(Clone, Copy)]
 pub struct Hand {
     pub value: HandValueType,
 }

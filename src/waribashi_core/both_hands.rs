@@ -4,6 +4,8 @@ use super::{
     moves::Moves
 };
 
+
+#[derive(Clone, Copy)]
 pub struct BothHands {
     pub left_hand: Hand,
     pub right_hand: Hand,
@@ -28,7 +30,7 @@ impl BothHands {
     }
 
     pub fn add(&mut self, moves: &Moves) {
-        
+
     }
 }
 
