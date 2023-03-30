@@ -12,6 +12,16 @@ use super::{
 };
 
 const DEFAULT_PLAYERS_NUM: usize = 2;
+const DEFAULT_MAX_HAND_VALUE: HandValueType = 5;
+
+const DEFAULT_IS_DICISIBLE: bool = true;
+const DEFAULT_IS_TRANSFERABLE: bool = true;
+
+const DEFAULT_ENABLE_REVERSE: bool = false;
+
+const DEFAULT_ENABLE_ZOMBIE: bool = false;
+const DEFAULT_CAN_BE_NAGATIVE: bool = false;
+
 
 
 ///
@@ -37,23 +47,39 @@ pub struct Rule {
     
     // 基礎B
     pub is_divisible: bool,
-    pub is_transfer_only: bool,
-    pub is_division_only: bool,
+    pub is_transferable: bool,
 
     // 発展A
-    pub rollover: Rollover,
-    pub suicide: Suicide,
-    pub reverse: bool,
+    pub enable_rollover: Rollover,
+    pub enable_suicide: Suicide,
+    pub enable_reverse: bool,
 
     // 発展B
-    pub zombie: bool,
+    pub enable_zombie: bool,
     pub can_be_negative: bool,
 }
 impl Rule {
-    pub fn new() {
+    pub fn new() -> Self {
+        let new_players_num = DEFAULT_PLAYERS_NUM;
+
+        let temp_hands = BothHands::new();
+        let mut new_default_hands = Vec::new();
+        new_default_hands.resize_with(new_players_num, || { temp_hands.clone() });
+
         Self {
-            players_num: DEFAULT_PLAYERS_NUM,
-            default_hands: 
+            players_num: new_players_num,
+            default_hands: new_default_hands,
+            max_hand_value: DEFAULT_MAX_HAND_VALUE,
+
+            is_divisible: DEFAULT_IS_DICISIBLE,
+            is_transferable: DEFAULT_IS_TRANSFERABLE,
+
+            enable_rollover: Rollover::new(),
+            enable_suicide: Suicide::new(),
+            enable_reverse: DEFAULT_ENABLE_REVERSE,
+
+            enable_zombie: DEFAULT_ENABLE_ZOMBIE,
+            can_be_negative: DEFAULT_CAN_BE_NAGATIVE
         }
     }
 }
