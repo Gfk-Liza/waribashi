@@ -4,12 +4,14 @@ mod both_hands;
 mod moves;
 mod turn;
 mod rule;
+mod hand_index;
 
 use both_hands::BothHands;
 use moves::Moves;
 use rule::Rule;
 use self::turn::Turn;
-use std::vec;
+
+
 
 pub struct GameBoard {
     pub players_hands: Vec<BothHands>,
@@ -18,8 +20,8 @@ pub struct GameBoard {
 }
 impl GameBoard {
     pub fn new(new_rule: &Rule) -> GameBoard {
-        let new_hands: Vec<BothHands> = Vec::new();
-        let index: usize = 0;
+        let mut new_hands: Vec<BothHands> = Vec::new();
+        let mut index: usize = 0;
         new_hands.resize_with(
             new_rule.players_num,
             || { index += 1; new_rule.default_hands[index] }
@@ -28,18 +30,11 @@ impl GameBoard {
         Self {
             players_hands: new_hands,
             turn: Turn::new(),
-            rule: *new_rule.clone()
+            rule: new_rule.clone()
         }
     }
 
     pub fn action(&mut self, moves: &Moves) {
-        let hand = &mut self.players_hands[
-            moves.get_destination(&self.turn).turn
-            ];
 
-        if moves.is_divided {
-            hand.divide(moves);
-            return;
-        }
     }
 }

@@ -19,7 +19,7 @@ impl BothHands {
     }
 
     pub fn divide(&mut self, moves: &Moves) {
-        if moves.is_source_left_hand {
+        if moves.starting_point.hand_index.is_left_hand {
             self.right_hand.value += moves.add_value;
             self.left_hand.value -= moves.add_value;
         }

@@ -14,7 +14,7 @@ use super::{
 const DEFAULT_PLAYERS_NUM: usize = 2;
 const DEFAULT_MAX_HAND_VALUE: HandValueType = 5;
 
-const DEFAULT_IS_DICISIBLE: bool = true;
+const DEFAULT_IS_DIVISIBLE: bool = true;
 const DEFAULT_IS_TRANSFERABLE: bool = true;
 
 const DEFAULT_ENABLE_REVERSE: bool = false;
@@ -27,7 +27,7 @@ const DEFAULT_CAN_BE_NEGATIVE: bool = false;
 ///
 /// # 実装されたルール(Wikipediaより)
 /// * `カットオフ / ロールオーバー` - 手の広げられた指が５本を超える場合、（「ロールオーバー」とは対照的）その手は死ぬ。
-/// ロールオーバーは余り
+/// ロールオーバーは余りである。
 /// * `自殺` - プレイヤーは分割で自分の手の１つを殺すことができる。
 /// * `逆形` - 最初に自分の全ての手が死んだプレイヤーが勝利となる。
 /// * `ゾンビ` - ３人以上のプレイヤーがいる場合、ゲームに負けたプレイヤーは、片方の手で指を１本広げた状態（すなわち01）でゲームが終わるまでプレイに残り続ける。
@@ -39,6 +39,7 @@ const DEFAULT_CAN_BE_NEGATIVE: bool = false;
 /// また、プレイヤーは自身のターンで手を表裏ひっくり返し、手の表す値の＋/－符号(正負)を変えることが許されている。
 /// 正負を変化させるこの移動は、ロールオーバーにおいて１つの手の表す値を、５からその値を引いたものに置き換える移動と等価である。
 ///
+#[derive(Clone)]
 pub struct Rule {
     // 基礎A
     pub players_num: usize,
@@ -71,7 +72,7 @@ impl Rule {
             default_hands: new_default_hands,
             max_hand_value: DEFAULT_MAX_HAND_VALUE,
 
-            is_divisible: DEFAULT_IS_DICISIBLE,
+            is_divisible: DEFAULT_IS_DIVISIBLE,
             is_transferable: DEFAULT_IS_TRANSFERABLE,
 
             enable_rollover: Rollover::new(),
