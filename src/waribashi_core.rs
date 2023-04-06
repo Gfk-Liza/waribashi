@@ -12,7 +12,7 @@ use self::turn::Turn;
 use std::vec;
 
 pub struct GameBoard {
-    pub playres_hands: Vec<BothHands>,
+    pub players_hands: Vec<BothHands>,
     pub turn: Turn,
     pub rule: Rule,
 }
@@ -24,22 +24,22 @@ impl GameBoard {
             new_rule.players_num,
             || { index += 1; new_rule.default_hands[index] }
         );
-        
+
         Self {
-            playres_hands: new_hands,
+            players_hands: new_hands,
             turn: Turn::new(),
             rule: *new_rule.clone()
         }
     }
 
     pub fn action(&mut self, moves: &Moves) {
-        let hand = &mut self.playres_hands[moves.get_destination(&self.turn).turn];
+        let hand = &mut self.players_hands[
+            moves.get_destination(&self.turn).turn
+            ];
 
         if moves.is_divided {
             hand.divide(moves);
             return;
         }
-
-
     }
 }

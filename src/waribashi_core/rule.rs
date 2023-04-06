@@ -20,7 +20,7 @@ const DEFAULT_IS_TRANSFERABLE: bool = true;
 const DEFAULT_ENABLE_REVERSE: bool = false;
 
 const DEFAULT_ENABLE_ZOMBIE: bool = false;
-const DEFAULT_CAN_BE_NAGATIVE: bool = false;
+const DEFAULT_CAN_BE_NEGATIVE: bool = false;
 
 
 
@@ -38,13 +38,13 @@ const DEFAULT_CAN_BE_NAGATIVE: bool = false;
 /// このとき、広げられた指の本数が０であるような生きている手も可能となるが（値３の手が値-３の手に攻撃された場合など）、手は値５または値-５になったときに死ぬ。
 /// また、プレイヤーは自身のターンで手を表裏ひっくり返し、手の表す値の＋/－符号(正負)を変えることが許されている。
 /// 正負を変化させるこの移動は、ロールオーバーにおいて１つの手の表す値を、５からその値を引いたものに置き換える移動と等価である。
-/// 
+///
 pub struct Rule {
     // 基礎A
     pub players_num: usize,
     pub default_hands: Vec<BothHands>,
     pub max_hand_value: HandValueType,
-    
+
     // 基礎B
     pub is_divisible: bool,
     pub is_transferable: bool,
@@ -79,7 +79,7 @@ impl Rule {
             enable_reverse: DEFAULT_ENABLE_REVERSE,
 
             enable_zombie: DEFAULT_ENABLE_ZOMBIE,
-            can_be_negative: DEFAULT_CAN_BE_NAGATIVE
+            can_be_negative: DEFAULT_CAN_BE_NEGATIVE
         }
     }
 }
