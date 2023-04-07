@@ -1,6 +1,6 @@
 
 mod move_options;
-mod address;
+pub mod address;
 
 use super::{
     hand::HandValueType,
@@ -10,7 +10,6 @@ use {
     move_options::MoveOptions,
     address::HandAddress
 };
-
 
 
 

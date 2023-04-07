@@ -3,7 +3,7 @@
 
 pub struct MoveOptions {
     pub is_attack: bool,
-    pub enable_divide: bool,
+    pub is_division: bool,
     pub is_changing_positive_and_negative: bool,
 }
 impl MoveOptions {
@@ -11,7 +11,7 @@ impl MoveOptions {
     pub fn new() -> Self {
         Self {
             is_attack: false,
-            enable_divide: false,
+            is_division: false,
             is_changing_positive_and_negative: false
         }
     }

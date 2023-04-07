@@ -1,7 +1,7 @@
 
 use super::{
     hand::Hand,
-    moves::Moves
+    moves::Moves, hand_index::HandIndex
 };
 
 
@@ -18,19 +18,19 @@ impl BothHands {
         }
     }
 
-    pub fn divide(&mut self, moves: &Moves) {
-        if moves.starting_point.hand_index.is_left_hand {
-            self.right_hand.value += moves.add_value;
-            self.left_hand.value -= moves.add_value;
+    pub fn get_hand(&mut self, hand_index: &HandIndex) -> &mut Hand {
+        if hand_index.is_left_hand {
+            return &mut self.left_hand;
         }
-        else {
-            self.left_hand.value += moves.add_value;
-            self.right_hand.value -= moves.add_value;
-        }
+        &mut self.right_hand
     }
 
-    pub fn add(&mut self, moves: &Moves) {
+    pub fn print_hand(&self) {
+        let print_space = || { print!("  "); };
 
+        print_space();
+        println!("left hand: {}", self.left_hand.value);
+        print_space();
+        println!("right hand: {}", self.right_hand.value);
     }
 }
-

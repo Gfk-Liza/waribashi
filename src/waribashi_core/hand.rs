@@ -1,5 +1,8 @@
 
-pub type HandValueType = u8;
+use super::Rule;
+
+
+pub type HandValueType = i8;
 
 pub const DEFAULT_HAND_VALUE: HandValueType = 0;
 
@@ -13,5 +16,16 @@ impl Hand {
         Self {
             value: DEFAULT_HAND_VALUE
         }
+    }
+
+    pub fn add(&mut self, add_value: &HandValueType, max_hand_value: &HandValueType) {
+        self.value += add_value;
+        if self.value.abs() > *max_hand_value {
+            self.value = 0;
+        }
+    }
+
+    pub fn to_be_negative(&mut self) {
+        self.value *= -1;
     }
 }
